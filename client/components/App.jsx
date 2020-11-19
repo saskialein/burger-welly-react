@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import { fetchBurgers } from '../actions'
+import { connect } from 'react-redux'
 
 import Home from './Home'
 import Nav from './Nav'
@@ -8,6 +10,9 @@ import Burgers from './Burgers'
 
 class App extends React.Component {
 
+componentDidMount() {
+  this.props.dispatch(fetchBurgers())
+}
 
   render() {
     return (
@@ -19,7 +24,7 @@ class App extends React.Component {
           <Route exact path='/' component={Home} />
         </div>
         <div className="main" id="main-background">
-          <Route exact path='/burger' component={Burgers} />
+          <Route path='/burger' component={Burgers}/>
         </div>
         <div className="main-footer">
           <Footer />
@@ -29,4 +34,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default connect()(App)
