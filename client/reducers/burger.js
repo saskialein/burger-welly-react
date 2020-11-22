@@ -1,5 +1,5 @@
 const initialState = []
-import { GET_BURGERS } from '../actions/index'
+import { GET_BURGERS, DEL_BURGER, ADD_BURGER } from '../actions/index'
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
@@ -7,7 +7,15 @@ const reducer = (state = initialState, action) => {
             return action.burgers
         default: 
             return state
+        
+        case DEL_BURGER:
+            return state.filter((burgers) => burgers !== action.burgers)
+        
+        case ADD_BURGER:
+            return [...state, action.burgers]
     }
 }
+
+
 
 export default reducer 

@@ -14,17 +14,17 @@
       font-family: 'Roboto', sans-serif;
       height: 100vh;
       width: 100vw;
+      background-color: blanchedalmond;
 }
   
-
 .layout {
     display: grid;
-    grid-template-rows: 2.5rem auto fit-content(5rem);
+    grid-template-rows: 2.5rem auto fit-content(2rem);
     grid-template-areas: "header"
                          "main"
                          "footer";
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
 }
 
 /* home page */
@@ -33,14 +33,14 @@
   }
 
 #home-background {
-    background: url('./images/background.jpg') center/cover no-repeat border-box #373a40;
-    background-size: cover;
+    background: url('./images/background.jpg') center/cover no-repeat;
+    /* background-size: cover; */
     opacity: 0.9;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     margin: 0;
     padding: 0;
-    position: absolute;
+    position: relative;
     left: 0;
   }
 
@@ -60,24 +60,24 @@
 
 /* burger overview & burger detailed view */
 
-#main-background {
+/* #main-background {
     background-color: #f4d9c6;
 
-}
+} */
 
 #burgers-title {
     font-family: 'Poppins', sans-serif;
     text-align: center;
     font-size: 3rem;  
     color: #94b4a4;
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
 .burger-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 10px;
-    grid-row-gap: 30px;
+    grid-row-gap: 20px;
     padding: 15px 25px;
 }
 
@@ -88,7 +88,7 @@
     padding: 25px;
     text-align: center;
     width: 500px;
-    margin: 2rem auto;
+    margin: 1.5rem auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: #94b4a4;
 }
@@ -96,11 +96,11 @@
 .burger-card-view {
     border: 2px solid rgba(104, 109, 118, 0.15);
     border-radius: 10px;
-    padding: 25px;
+    padding: 15px;
     text-align: center;
-    width: 80%;
+    width: 90%;
     max-width: 800px;
-    margin: 4rem auto;
+    margin: 3rem auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: #94b4a4;
 }
@@ -121,8 +121,8 @@
 .burger-card img,
 .burger-card-view img {
     border-radius: 10px;
-    padding-bottom: 1rem;
-    width: 90%;
+    padding-bottom: 0.8rem;
+    width: 80%;
     height: auto;
 }
 
@@ -158,6 +158,8 @@
     background-color: #f4d9c6;
     width: 250px;
     margin: 0 auto;
+    margin-bottom: 1rem;
+
 }
 
 .new-burger-button a {
@@ -267,10 +269,10 @@ input[type=submit] {
     left: 0;
     background: #92817a;
     padding: .6rem;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     grid-area: footer;
     z-index: 9;
-    position: fixed;
+    /* position: fixed; */
     /* display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -305,4 +307,9 @@ input[type=submit] {
 
   li {
       font-weight: 5rem;
+  }
+
+  h1 {
+      color: black;
+      font-size: 5rem;
   }

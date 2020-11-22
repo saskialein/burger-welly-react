@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const BurgerListItem = (props) => {
     const burger = props.burger
@@ -10,7 +11,7 @@ const BurgerListItem = (props) => {
                 <h3>{burger.name}</h3>
                 <img src={burger.image_url} alt="burger"/>
                 <br/>
-                    <a href="/burger/{props.key}">Click here to see more</a>
+            <Link to={`/burger/${burger.id}`}>Click here to see more</Link>
             </div>
         // </div>
     )

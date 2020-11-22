@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import BurgerListItem from './BurgerListItem'
 
 const Burgers = (props) => {
 
     
         return (
-            <div>
+            <div className="main">
                 <h1 id="burgers-title" >We had aaaaaall these burgers:</h1>
                     <div className="burger-grid">    
                     { props.burgers.map(burger => {
@@ -16,7 +17,7 @@ const Burgers = (props) => {
 
                     </div>
                 <div className="new-burger-button">
-                    <a href="/burger/new"><h2>Add a burger</h2></a>
+                    <Link to ="/burger/new"><h2>Add a burger</h2></Link>
                 </div>
             </div>
         )
