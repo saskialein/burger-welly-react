@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addBurgerAPI } from '../actions'
-import { fetchBurgers } from '../actions'
+import { saveBurger } from '../actions/index'
 
 class BurgerForm extends React.Component {
     state = {
@@ -21,17 +19,16 @@ class BurgerForm extends React.Component {
     
       submitHandler = (e) => {
         e.preventDefault()
-          this.props.dispatch(addBurgerAPI(this.state))
-         .then(() => {
-              this.props.dispatch(fetchBurgers)
-            }  )
-        this.setState({
+          this.props.dispatch(
+              saveBurger(this.state))
+            this.setState({
             name: '',
             image_url: '',
             restaurant: '',
             description: '',
             comment: ''
-        })
+            })
+            this.props.history.push('/burger')
       }
 
     render() {
@@ -39,7 +36,7 @@ class BurgerForm extends React.Component {
         <div className="main">
             <h2>Add a new burger</h2>
 
-            <form onSubmit={this.submitHandler} className="form">
+           <form onSubmit={this.submitHandler} className="form">
             
                 <label className="form-item">
                     Name:
@@ -65,8 +62,8 @@ class BurgerForm extends React.Component {
                     Comment:
                     <input onChange={this.handleChange} type="text" name="comment" value={this.state.comment}/>
                 </label><br/>
-            
-                <Link to={'/burger'}><button onClick={ this.submitHandler}>ADD</button></Link>
+
+                <input type="submit" value="Add this burger!!!"/>
             </form>
         </div>
     )

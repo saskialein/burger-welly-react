@@ -1,69 +1,59 @@
-import request from 'superagent'
+import {addBurgerAPI, deleteBurgerAPI, retrieveBurgerAPI} from '../apis/api'
 
 export const GET_BURGERS = 'GET_BURGERS'
-export const DEL_BURGER = 'DEL_BURGER'
 export const ADD_BURGER = 'ADD_BURGER'
+export const DEL_BURGER = 'DEL_BURGER'
 
+//GET
 export const getBurgers = (burgers) => {
     return {
       type: GET_BURGERS,
-      burgers: burgers
+      burgers
     }
   }
   
-export const deleteBurger = (burgers) => {
-  return {    
-  type: DEL_BURGER,
-  burgers: burgers
-}
-}
-
-// gets burgers from backend db routes returns array of all burger objects
-export function fetchBurgers () {
-  return (dispatch) => {
-    return request
-    .get('/api/burger')
-    .then(res => {
-      dispatch(getBurgers(res.body))
-    })
-    .catch(err => {
-      console.log(err)
-    })
+  // gets burgers from backend db routes returns array of all burger objects
+  export function fetchBurgers () {
+    return (dispatch) => {
+      return retrieveBurgerAPI()
+      .then(burgers => {
+        dispatch(getBurgers(burgers))
+      })
+    }
   }
-}
-
-export const addBurger = (burgers) => {
-  return {
-    type: ADD_BURGER,
-    burgers: burgers
+  
+  //ADD
+  export const addBurger = (newBurger) => {
+    return {
+      type: ADD_BURGER,
+      burger: newBurger
+    }
   }
-}
+  
+  
+  export function saveBurger (newBurger) {
+    return (dispatch) => {
+      addBurgerAPI(newBurger)
+        .then((idObj) => {
+          const id = idObj.id
+          newBurger.id = id
 
-
-export function addBurgerAPI (theState) {
-  const newBurger = {
-    name: theState.name,
-    image_url: theState.image_url,
-    restaurant: theState.restaurant,
-    description: theState.description,
-    comment: theState.comment  
-  }
-  return (dispatch) => {
-    return request
-      .post('/api/burger/new')
-      .send(newBurger)
-      .then((res) => {
         dispatch(addBurger(newBurger))
       })
+    }
+  }
+
+  //DELETE
+export const deleteBurger = (id) => {
+  return {    
+  type: DEL_BURGER,
+  id: id
+  }
 }
+
+export function removeBurger(id){
+  return (dispatch) => {
+    deleteBurgerAPI(id)
+    .then(() => dispatch(deleteBurger(id)))
+  } 
 }
-// export function postBurger (newBurger) {
-//   return (dispatch) => {
-//     return request
-//       .post('/api/burger/new')
-//       .send(newBurger)
-//       .then(() => {
-//         dispatch(addBurger( newBurger ))
-//       })
-//   }
-// }

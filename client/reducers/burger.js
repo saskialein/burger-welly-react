@@ -5,16 +5,17 @@ const reducer = (state = initialState, action) => {
     switch(action.type) {
         case GET_BURGERS:
             return action.burgers
+            
+        case ADD_BURGER:
+            return [...state, action.burger]
+                
+        case DEL_BURGER:
+            return state.filter((burger) => burger.id != action.id)
+                    
         default: 
             return state
-        
-        case DEL_BURGER:
-            return state.filter((burgers) => burgers !== action.burgers)
-        
-        case ADD_BURGER:
-            return [...state, action.burgers]
-    }
-}
+                }
+            }
 
 
 

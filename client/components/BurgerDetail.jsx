@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { deleteBurger } from '../actions'
+import {removeBurger} from '../actions/index'
 
 const BurgerDetail = (props) => {
     
@@ -22,7 +22,7 @@ const BurgerDetail = (props) => {
                 <p>{burger.comment}</p> 
             <div className="edit-delete-buttons">
                 <Link to={`/burger/edit/${burger.id}`}><button>Edit Burger</button></Link>
-                <Link to='/burger'><button onClick={() => {props.dispatch(deleteBurger(burger))}}>Delete Burger</button></Link>
+                <Link to='/burger'><button onClick={() => props.dispatch(removeBurger(burger.id))}>Delete Burger</button></Link>
             </div>           
         </div>
                 )
