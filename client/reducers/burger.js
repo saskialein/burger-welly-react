@@ -12,15 +12,26 @@ const reducer = (state = initialState, action) => {
         case DEL_BURGER:
             return state.filter((burger) => burger.id != action.id)
         
+        // case UPDATE_BURGER:
+        //     newState = [...state]
+        //     found = newState.find(burger => burger.id == action.id)
+        //     found.name = action.name
+        //     found.image_url = action.image_url
+        //     found.restaurant = action.restaurant
+        //     found.description = action.description
+        //     found.comment = action.comment
+        //     return newState
+
         case UPDATE_BURGER:
-            newState = [...state]
-            found = newState.find(burger => burger.id == action.id)
-            found.name = action.name
-            found.image_url = action.image_url
-            found.restaurant = action.restaurant
-            found.description = action.description
-            found.comment = action.comment
-            return newState
+            return state.map((burger) => {
+                if (burger.id == action.id)
+                {
+                  return action.burger 
+                }
+                else {
+                  return burger
+                }
+              })
                     
         default: 
             return state

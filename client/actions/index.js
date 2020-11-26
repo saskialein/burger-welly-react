@@ -72,6 +72,8 @@ export const editBurger = (id, updatedBurger) => {
 export function updateBurger (updatedBurger, id) {
   return (dispatch) => {
     updateBurgerAPI(id, updatedBurger)
-    .then(() => dispatch(editBurger(id, updatedBurger)))
+      .then(() => {
+        dispatch(editBurger(id, updatedBurger))
+      })
   }
 }

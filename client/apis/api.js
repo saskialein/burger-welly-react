@@ -21,7 +21,7 @@ export function deleteBurgerAPI(id) {
       .then(res => res.body)
 }
 
-export function updateBurgerAPI(updatedBurger, id){
+export function updateBurgerAPI(id, updatedBurger){
   return request
     .patch(`/api/v1/burger/${id}`)
     .send(updatedBurger)

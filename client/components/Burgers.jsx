@@ -12,7 +12,7 @@ const Burgers = (props) => {
                     <div className="burger-grid">    
                     { props.burgers.map(burger => {
                         return (
-                            <BurgerListItem key={burger.id} burger = {burger} />)
+                        <BurgerListItem key={burger.id} burger = {burger} />)
                     })}
 
                     </div>

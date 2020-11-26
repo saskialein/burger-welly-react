@@ -7,7 +7,6 @@ class EditBurger extends React.Component {
 
     state = {
         name: '',
-        image_url: '',
         restaurant: '',
         description: '',
         comment: ''
@@ -25,7 +24,6 @@ class EditBurger extends React.Component {
               updateBurger(this.state, id))
             this.setState({
             name: '',
-            image_url: '',
             restaurant: '',
             description: '',
             comment: ''
@@ -44,14 +42,14 @@ class EditBurger extends React.Component {
                         <div className="burger-card-view" key={burger.id}>
                             <form onSubmit={(event) => this.submitHandler(event, burger.id)}>
   
-                                <img className="img-circle" src={burger.image_url} alt={burger.name} />
+                                <img className="img-circle" src={burger.image_url} alt={burger.name} value={burger.image_url}/>
   
                                 <br />
 
                                 <label className="form-item">
                                     Name:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="name" placeholder={burger.name} />
+                                    <input onChange={this.handleChange} type="text" name="name" placeholder={burger.name} value={this.state.name}/>
                                 </label>
 
                                 <br />
@@ -59,7 +57,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Restaurant:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="restaurant" placeholder={burger.restaurant} />
+                                    <input onChange={this.handleChange} type="text" name="restaurant" placeholder={burger.restaurant} value={this.state.restaurant}/>
                                 </label>
   
                                 <br />
@@ -67,7 +65,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Description:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="description" placeholder={burger.description} />
+                                    <input onChange={this.handleChange} type="text" name="description" placeholder={burger.description} value={this.state.description}/>
                                 </label>
   
                                 <br />
@@ -75,7 +73,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Comment:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="comment" placeholder={burger.comment} />
+                                    <input onChange={this.handleChange} type="text" name="comment" placeholder={burger.comment} value={this.state.comment}/>
                                 </label><br />
   
                                 <input type="submit" value="Submit" />

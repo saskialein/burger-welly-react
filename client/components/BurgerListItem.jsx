@@ -7,7 +7,7 @@ const BurgerListItem = (props) => {
     
     return (
         // <div className="burger-grid">
-            <div className="burger-card">
+            <div className="burger-card" key={burger.id}>
                 <h3>{burger.name}</h3>
                 <img src={burger.image_url} alt="burger"/>
                 <br/>
