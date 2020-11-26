@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { saveBurger } from '../actions'
+
 
 class EditBurger extends React.Component {
 
@@ -17,10 +19,10 @@ class EditBurger extends React.Component {
         })
       }
     
-      submitHandler = (e) => {
+      submitHandler = (e, id) => {
         e.preventDefault()
           this.props.dispatch(
-              saveBurger(this.state))
+              updateBurger(this.state, id))
             this.setState({
             name: '',
             image_url: '',
@@ -40,7 +42,7 @@ class EditBurger extends React.Component {
                 {this.props.burgers.filter(burger => burger.id == id).map((burger) => {
                     return (
                         <div className="burger-card-view" key={burger.id}>
-                            <form onSubmit={this.submitHandler}>
+                            <form onSubmit={(event) => this.submitHandler(event, burger.id)}>
   
                                 <img className="img-circle" src={burger.image_url} alt={burger.name} />
   
@@ -49,7 +51,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Name:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="name" value={burger.name} />
+                                    <input onChange={this.handleChange} type="text" name="name" placeholder={burger.name} />
                                 </label>
 
                                 <br />
@@ -57,7 +59,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Restaurant:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="restaurant" value={burger.restaurant} />
+                                    <input onChange={this.handleChange} type="text" name="restaurant" placeholder={burger.restaurant} />
                                 </label>
   
                                 <br />
@@ -65,7 +67,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Description:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="description" value={burger.description} />
+                                    <input onChange={this.handleChange} type="text" name="description" placeholder={burger.description} />
                                 </label>
   
                                 <br />
@@ -73,7 +75,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Comment:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="comment" value={burger.comment} />
+                                    <input onChange={this.handleChange} type="text" name="comment" placeholder={burger.comment} />
                                 </label><br />
   
                                 <input type="submit" value="Submit" />
