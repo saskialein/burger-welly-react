@@ -1,8 +1,9 @@
-import {addBurgerAPI, deleteBurgerAPI, retrieveBurgerAPI} from '../apis/api'
+import {addBurgerAPI, deleteBurgerAPI, retrieveBurgerAPI, updateBurgerAPI} from '../apis/api'
 
 export const GET_BURGERS = 'GET_BURGERS'
 export const ADD_BURGER = 'ADD_BURGER'
 export const DEL_BURGER = 'DEL_BURGER'
+export const UPDATE_BURGER = 'UPDATE_BURGER'
 
 //GET
 export const getBurgers = (burgers) => {
@@ -30,7 +31,6 @@ export const getBurgers = (burgers) => {
     }
   }
 
- 
   
   export function saveBurger (newBurger) {
     return (dispatch) => {
@@ -57,4 +57,21 @@ export function removeBurger(id){
     deleteBurgerAPI(id)
     .then(() => dispatch(deleteBurger(id)))
   } 
+}
+
+//UPDATE
+
+export const editBurger = (id, updatedBurger) => {
+  return {
+    type: UPDATE_BURGER,
+    id: id,
+    burger: updatedBurger
+  }
+}
+
+export function updateBurger (updatedBurger, id) {
+  return (dispatch) => {
+    updateBurgerAPI(id, updatedBurger)
+    .then(() => dispatch(editBurger(id, updatedBurger)))
+  }
 }

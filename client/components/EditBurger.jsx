@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { saveBurger } from '../actions'
+import { updateBurger } from '../actions'
 
 
 class EditBurger extends React.Component {

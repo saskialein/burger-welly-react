@@ -28,7 +28,7 @@ class App extends React.Component {
           <Route path='/burger/edit/:id' component={EditBurger} />
           <Route path='/burger/:id' component={BurgerDetail} />
         </Switch>
-          <Footer />
+        <Footer />
       </div>
     )
   }
