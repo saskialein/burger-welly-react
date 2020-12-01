@@ -6,14 +6,12 @@ const BurgerListItem = (props) => {
     const burger = props.burger
     
     return (
-        // <div className="burger-grid">
             <div className="burger-card" key={burger.id}>
                 <h3>{burger.name}</h3>
-                <img src={burger.image_url} alt="burger"/>
+            <img src={burger.image_url} alt={burger.name}/>
                 <br/>
-            <Link to={`/burger/${burger.id}`}>Click here to see more</Link>
+                <Link to={`/burger/${burger.id}`}>Click here to see more</Link>
             </div>
-        // </div>
     )
 }
 

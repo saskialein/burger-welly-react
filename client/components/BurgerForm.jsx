@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import { saveBurger } from '../actions/index'
 
 class BurgerForm extends React.Component {
@@ -19,8 +20,7 @@ class BurgerForm extends React.Component {
     
       submitHandler = (e) => {
         e.preventDefault()
-          this.props.dispatch(
-              saveBurger(this.state))
+          this.props.dispatch(saveBurger(this.state))
             this.setState({
             name: '',
             image_url: '',

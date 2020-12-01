@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateBurger } from '../actions'
 
+import { updateBurger } from '../actions'
 
 class EditBurger extends React.Component {
 
@@ -18,7 +18,7 @@ class EditBurger extends React.Component {
         })
       }
     
-      submitHandler = (e, id) => {
+    submitHandler = (e, id) => {
         e.preventDefault()
           this.props.dispatch(updateBurger(id, this.state))
               this.setState({
@@ -29,9 +29,8 @@ class EditBurger extends React.Component {
                 })
           this.props.history.push('/burger')
           window.location.reload()
-      }
+    }
 
-    
     render() {
         const id = this.props.match.params.id
     
@@ -83,9 +82,7 @@ class EditBurger extends React.Component {
                 }
                 )}
             </div>
-        )
-      
-    
+        )    
     }
 }
 

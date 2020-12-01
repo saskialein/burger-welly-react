@@ -30,7 +30,6 @@ export const getBurgers = (burgers) => {
       burger: newBurger
     }
   }
-
   
   export function saveBurger (newBurger) {
     return (dispatch) => {
@@ -44,7 +43,7 @@ export const getBurgers = (burgers) => {
     }
   }
 
-  //DELETE
+//DELETE
 export const deleteBurger = (id) => {
   return {    
   type: DEL_BURGER,
@@ -60,7 +59,6 @@ export function removeBurger(id){
 }
 
 //UPDATE
-
 export const editBurger = (id, updatedBurger) => {
   return {
     type: UPDATE_BURGER,
