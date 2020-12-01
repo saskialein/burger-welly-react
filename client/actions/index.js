@@ -69,7 +69,7 @@ export const editBurger = (id, updatedBurger) => {
   }
 }
 
-export function updateBurger (updatedBurger, id) {
+export function updateBurger (id, updatedBurger) {
   return (dispatch) => {
     updateBurgerAPI(id, updatedBurger)
       .then(() => {

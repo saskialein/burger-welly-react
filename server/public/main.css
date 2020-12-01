@@ -176,6 +176,12 @@
 }
 
 /* burger edit  */
+.edit-burger-title{
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 0;
+}
+
 label {
     font-size: 1.5rem;
     font-weight: bold;
@@ -215,6 +221,7 @@ input[type=submit] {
     top: 0;
     left: 0;
     background: #94b4a4;
+    border-bottom: #8E8F8E solid 1px;
     padding: 0.5rem 1rem;
     z-index: 60;
     display: -webkit-box;

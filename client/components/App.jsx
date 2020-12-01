@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { fetchBurgers } from '../actions'
 import { connect } from 'react-redux'
+
+import { fetchBurgers } from '../actions'
 
 import Home from './Home'
 import Nav from './Nav'
@@ -25,8 +26,8 @@ class App extends React.Component {
           <Route exact path='/' component={Home} />
           <Route exact path='/burger' component={Burgers} />
           <Route exact path='/burger/new' component={BurgerForm} />
-          <Route path='/burger/edit/:id' component={EditBurger} />
-          <Route path='/burger/:id' component={BurgerDetail} />
+          <Route exact path='/burger/edit/:id' component={EditBurger} />
+          <Route exact path='/burger/:id' component={BurgerDetail} />
         </Switch>
         <Footer />
       </div>
@@ -34,14 +35,10 @@ class App extends React.Component {
   }
 }
 
-export default connect()(App)
+function mapStateToProps(globalState) {
+  return {
+    burgers: globalState.burgers
+  }
+}
 
-{/* <Route path='/posts/edit/:id' render={(props) => (
-            <PostForm
-              fetchPosts={this.props.fetchPosts}
-              post={this.props.posts.find(post => (
-                post.id === Number(props.match.params.id))
-              )}
-              {...props}
-            />
-          )} /> */}
+export default connect(mapStateToProps)(App)

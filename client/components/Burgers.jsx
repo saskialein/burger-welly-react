@@ -10,9 +10,9 @@ const Burgers = (props) => {
             <div className="main">
                 <h1 id="burgers-title" >We had aaaaaall these burgers:</h1>
                     <div className="burger-grid">    
-                    { props.burgers.map(burger => {
+                    {props.burgers.map(burger => {
                         return (
-                        <BurgerListItem key={burger.id} burger = {burger} />)
+                        <BurgerListItem key={burger.id} burger={burger} />)
                     })}
 
                     </div>

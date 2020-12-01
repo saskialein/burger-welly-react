@@ -20,15 +20,15 @@ class EditBurger extends React.Component {
     
       submitHandler = (e, id) => {
         e.preventDefault()
-          this.props.dispatch(
-              updateBurger(this.state, id))
-            this.setState({
-            name: '',
-            restaurant: '',
-            description: '',
-            comment: ''
-            })
-            this.props.history.push('/burger')
+          this.props.dispatch(updateBurger(id, this.state))
+              this.setState({
+                  name: '',
+                  restaurant: '',
+                  description: '',
+                  comment: ''
+                })
+          this.props.history.push('/burger')
+          window.location.reload()
       }
 
     
@@ -49,7 +49,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Name:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="name" placeholder={burger.name} value={this.state.name}/>
+                                    <input onChange={this.handleChange} type="text" name="name" placeholder={burger.name} value={this.state.name} autoComplete="off"/>
                                 </label>
 
                                 <br />
