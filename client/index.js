@@ -16,11 +16,11 @@ const store = createStore(reducers, helpers)
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
-      <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
-      </Provider>,
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>,
     document.getElementById('app')
   )
 })

@@ -21,9 +21,13 @@ export function deleteBurgerAPI(id) {
       .then(res => res.body)
 }
 
-export function updateBurgerAPI (id, burger) {
-      return request  
-        .patch(`/api/v1/burger/${id}`)
-        .send(burger)
-        .then(res => res.body)
+export function updateBurgerAPI(id, updatedBurger){
+  return request
+    .patch(`/api/v1/burger/${id}`)
+    .send(updatedBurger)
+      .then(res => res.body)
   }
+
+
+
+

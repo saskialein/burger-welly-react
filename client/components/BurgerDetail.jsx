@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+
 import {removeBurger} from '../actions/index'
 
 const BurgerDetail = (props) => {
@@ -25,7 +26,7 @@ const BurgerDetail = (props) => {
                 <Link to='/burger'><button onClick={() => props.dispatch(removeBurger(burger.id))}>Delete Burger</button></Link>
             </div>           
         </div>
-                )
+            )
       })}
     </div>
     )

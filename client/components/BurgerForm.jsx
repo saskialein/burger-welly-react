@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import { saveBurger } from '../actions/index'
 
 class BurgerForm extends React.Component {
@@ -19,8 +20,7 @@ class BurgerForm extends React.Component {
     
       submitHandler = (e) => {
         e.preventDefault()
-          this.props.dispatch(
-              saveBurger(this.state))
+          this.props.dispatch(saveBurger(this.state))
             this.setState({
             name: '',
             image_url: '',
@@ -34,13 +34,13 @@ class BurgerForm extends React.Component {
     render() {
     return (
         <div className="main">
-            <h2>Add a new burger</h2>
-
+            <h2 className='edit-burger-title'>Add a new burger</h2>
+            <div className="burger-card-view">
            <form onSubmit={this.submitHandler} className="form">
             
                 <label className="form-item">
                     Name:
-                    <input onChange={this.handleChange} type="text" name="name" autoFocus={true} value={this.state.name}/>
+                    <input onChange={this.handleChange} type="text" name="name" autoFocus={true} value={this.state.name} autoComplete="off"/>
                 </label><br/>
             
                 <label className="form-item" >
@@ -64,7 +64,8 @@ class BurgerForm extends React.Component {
                 </label><br/>
 
                 <input type="submit" value="Add this burger!!!"/>
-            </form>
+                </form>
+                </div>
         </div>
     )
     }

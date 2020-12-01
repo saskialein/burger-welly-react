@@ -31,7 +31,6 @@ export const getBurgers = (burgers) => {
     }
   }
   
-  
   export function saveBurger (newBurger) {
     return (dispatch) => {
       addBurgerAPI(newBurger)
@@ -44,7 +43,7 @@ export const getBurgers = (burgers) => {
     }
   }
 
-  //DELETE
+//DELETE
 export const deleteBurger = (id) => {
   return {    
   type: DEL_BURGER,
@@ -60,17 +59,19 @@ export function removeBurger(id){
 }
 
 //UPDATE
-export const updateBurger = (id, burger) => {
+export const editBurger = (id, updatedBurger) => {
   return {
-      type: UPDATE_BURGER,
-      id,
-      burger
+    type: UPDATE_BURGER,
+    id: id,
+    burger: updatedBurger
   }
 }
 
-export function renewBurger (id, burger) {
+export function updateBurger (id, updatedBurger) {
   return (dispatch) => {
-    updateBurgerAPI(id, burger)
-    .then(() => dispatch(updateBurger(id, burger)))
+    updateBurgerAPI(id, updatedBurger)
+      .then(() => {
+        dispatch(editBurger(id, updatedBurger))
+      })
   }
 }
