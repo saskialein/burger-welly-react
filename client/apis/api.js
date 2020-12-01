@@ -20,3 +20,14 @@ export function deleteBurgerAPI(id) {
       .delete(`/api/v1/burger/${id}`)
       .then(res => res.body)
 }
+
+export function updateBurgerAPI(id, updatedBurger){
+  return request
+    .patch(`/api/v1/burger/${id}`)
+    .send(updatedBurger)
+      .then(res => res.body)
+  }
+
+
+
+

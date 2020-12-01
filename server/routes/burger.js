@@ -33,10 +33,8 @@ router.patch('/:id', (req, res) => {
   const id = req.params.id
   const updatedBurger = req.body
   return db.updateBurger(id, updatedBurger)
-  // above line means I went to update pup by the id & updatedTask variables I've defined here
-  .then( () => {
+  .then(() => {
       res.json({})
-      // sending back an empty body to the user as not really anything needed here for the user
   })
   .catch(err => {
       console.log(err)

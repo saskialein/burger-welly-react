@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { updateBurger } from '../actions'
+
 class EditBurger extends React.Component {
 
     state = {
         name: '',
-        image_url: '',
         restaurant: '',
         description: '',
         comment: ''
@@ -17,21 +18,19 @@ class EditBurger extends React.Component {
         })
       }
     
-      submitHandler = (e) => {
+    submitHandler = (e, id) => {
         e.preventDefault()
-          this.props.dispatch(
-              saveBurger(this.state))
-            this.setState({
-            name: '',
-            image_url: '',
-            restaurant: '',
-            description: '',
-            comment: ''
-            })
-            this.props.history.push('/burger')
-      }
+          this.props.dispatch(updateBurger(id, this.state))
+              this.setState({
+                  name: '',
+                  restaurant: '',
+                  description: '',
+                  comment: ''
+                })
+          this.props.history.push('/burger')
+          window.location.reload()
+    }
 
-    
     render() {
         const id = this.props.match.params.id
     
@@ -40,16 +39,16 @@ class EditBurger extends React.Component {
                 {this.props.burgers.filter(burger => burger.id == id).map((burger) => {
                     return (
                         <div className="burger-card-view" key={burger.id}>
-                            <form onSubmit={this.submitHandler}>
+                            <form onSubmit={(event) => this.submitHandler(event, burger.id)}>
   
-                                <img className="img-circle" src={burger.image_url} alt={burger.name} />
+                                <img className="img-circle" src={burger.image_url} alt={burger.name} value={burger.image_url}/>
   
                                 <br />
 
                                 <label className="form-item">
                                     Name:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="name" value={burger.name} />
+                                    <input onChange={this.handleChange} type="text" name="name" placeholder={burger.name} value={this.state.name} autoComplete="off"/>
                                 </label>
 
                                 <br />
@@ -57,7 +56,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Restaurant:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="restaurant" value={burger.restaurant} />
+                                    <input onChange={this.handleChange} type="text" name="restaurant" placeholder={burger.restaurant} value={this.state.restaurant}/>
                                 </label>
   
                                 <br />
@@ -65,7 +64,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Description:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="description" value={burger.description} />
+                                    <input onChange={this.handleChange} type="text" name="description" placeholder={burger.description} value={this.state.description}/>
                                 </label>
   
                                 <br />
@@ -73,7 +72,7 @@ class EditBurger extends React.Component {
                                 <label className="form-item">
                                     Comment:
                                     <br />
-                                    <input onChange={this.handleChange} type="text" name="comment" value={burger.comment} />
+                                    <input onChange={this.handleChange} type="text" name="comment" placeholder={burger.comment} value={this.state.comment}/>
                                 </label><br />
   
                                 <input type="submit" value="Submit" />
@@ -83,9 +82,7 @@ class EditBurger extends React.Component {
                 }
                 )}
             </div>
-        )
-      
-    
+        )    
     }
 }
 
