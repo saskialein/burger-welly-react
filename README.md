@@ -1,28 +1,30 @@
-# A starter webpack project for React
+# Burger Welly React
+A simple app to keep track of all the burgers I had during the Wellington on a Plate event.
 
-This is a starter project that uses webpack to transpile and bundle ES6 React code. To use, consider these steps:
+The [Visa Wellington on a Plate](https://www.visawoap.com/visawoap) event is New Zealand's biggest annual food festival spanning one month full of tasty events around Wellington.
+The three-week burger celebration, where more than 200 venues are serving up creative burger and beer matches, is the highlight of Visawoap.
 
-* Fork this repo
-* Rename your repo according to the app you're building
+I initially created this app as a Handlebars.js practice (see my other burger-welly repo) and then decided to convert it into a React app.
 
-```sh
-git clone https://github.com/[your-account]/[your-app].git
-cd [your-app] && npm i
-```
+## Technologies
+This project is created with:
+* React & Redux
+* Express.js
+* SQLite3
+* CSS
 
-To start the development server with a watcher that rebuilds your code, run `npm run dev`. The assets built by webpack are placed in `server/public`. This folder is defined as a static folder in an Express.js server that can be started with `npm run server`.
+## Getting started
+* After cloning this repo, install dependencies with `npm install`
+* migrate and run the seeds:
+`npm run knex migrate:latest`
+`npm run knex seed:run`
+* To run the server: `npm run dev`
 
-Additional components should be placed in `client/components`.
-
-## Separate client/server
-
-The boilerplate is also set up to host the client using `webpack-dev-server` with hot module reloading etc. To use this method, in one terminal run:
-```sh
-npm run client
-```
-and in the other:
-```sh
-npm run server
-```
-The client will be available on http://localhost:8080 and the server on http://localhost:3000. Note that you will still need to manage CORS between the two, as they are on different ports.
+## APIs
+| Method | Path | Description | NOTES |
+|---|---|---|---|
+| GET | /api/v1/burger | gets all burgers from the database
+| POST | /api/v1/burger | adds a new burger to the database
+| DELETE | /api/v1/burger/:id | deletes a burger by id
+| PATCH | /api/v1/burger/:id | updates a burger by id
 
